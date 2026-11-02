@@ -38,6 +38,28 @@ class TestZeroTrustEvaluator(unittest.TestCase):
         self.assertIn("NIST SP 800-207", table_output)
         self.assertIn("Identity", table_output)
         self.assertIn("OPTIMAL", table_output)
+        # Ensure output is 100% encodable in standard ASCII / cp1252 (no UnicodeEncodeError)
+        self.assertTrue(table_output.encode("ascii", errors="strict"))
+
+    def test_top_recommendations_non_empty_for_optimal(self):
+        data = get_default_sample_matrix()
+        report = self.evaluator.evaluate_payload(data)
+        self.assertGreater(len(report.top_recommendations), 0)
+        self.assertEqual(len(report.top_recommendations), 5)
+
+    def test_low_maturity_pillar_generates_traditional_gaps(self):
+        low_data = {
+            "pillars": {
+                "identity": {"score": 40},
+                "device": {"score": 45},
+                "network": {"score": 50},
+                "application": {"score": 55},
+                "data": {"score": 60}
+            }
+        }
+        report = self.evaluator.evaluate_payload(low_data)
+        self.assertEqual(report.pillars["identity"].stage, "TRADITIONAL")
+        self.assertIn("FIDO2", str(report.pillars["identity"].gaps))
 
 
 if __name__ == "__main__":
