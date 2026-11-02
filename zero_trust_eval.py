@@ -77,8 +77,8 @@ class ZeroTrustEvaluator:
             total_score += score
             stage = self.classify_stage(score)
 
-            strengths = p_info.get("strengths", [])
-            gaps = p_info.get("gaps", [])
+            strengths = list(p_info.get("strengths", []))
+            gaps = list(p_info.get("gaps", []))
 
             if score < 90:
                 if p == "identity":
@@ -91,6 +91,17 @@ class ZeroTrustEvaluator:
                     gaps.append("Deploy API gateways with mutual TLS (mTLS) and workload identity federation.")
                 elif p == "data":
                     gaps.append("Implement continuous cryptographic data discovery and automated labeling.")
+            else:
+                if p == "identity":
+                    gaps.append("Enforce continuous adaptive session risk re-authentication on anomalous behavioral telemetry.")
+                elif p == "device":
+                    gaps.append("Enforce continuous device health attestation with hardware TPM and zero-touch containment.")
+                elif p == "network":
+                    gaps.append("Advance toward dynamic micro-perimeters with automated isolation and encrypted mesh routing.")
+                elif p == "application":
+                    gaps.append("Enforce continuous runtime API profiling, automated SBOM validation, and ephemeral credentials.")
+                elif p == "data":
+                    gaps.append("Automate cryptographic lifecycle management with dynamic data rights and continuous DLP.")
 
             scored_pillars[p] = PillarScore(
                 name=p.capitalize(),
@@ -135,11 +146,11 @@ def format_zt_table(report: AssessmentReport) -> str:
     ]
 
     for p_name, p in report.pillars.items():
-        # Render visual meter: e.g. [████████░░] 80%
+        # Render visual meter with safe ASCII characters: e.g. [##########] 96%
         filled = int(p.score / 10)
         empty = 10 - filled
-        meter = "[" + ("█" * filled) + ("░" * empty) + "]"
-        lines.append(f"  • {p.name.ljust(12)}: {meter} {str(p.score).rjust(3)}%  [{p.stage}]")
+        meter = "[" + ("#" * filled) + ("-" * empty) + "]"
+        lines.append(f"  * {p.name.ljust(12)}: {meter} {str(p.score).rjust(3)}%  [{p.stage}]")
 
     lines.append("--------------------------------------------------------------------------")
     lines.append("Key Transformation Directives for Optimal Maturity:")
@@ -184,6 +195,12 @@ def get_default_sample_matrix() -> Dict[str, Any]:
 
 
 def main() -> None:
+    try:
+        if hasattr(sys.stdout, "reconfigure"):
+            sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
     parser = argparse.ArgumentParser(
         description="NIST SP 800-207 & CISA ZTMM Zero Trust Maturity Evaluator",
         formatter_class=argparse.RawDescriptionHelpFormatter,
