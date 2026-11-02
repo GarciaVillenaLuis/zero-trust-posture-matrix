@@ -1,5 +1,6 @@
 # Zero Trust Posture Matrix 🌐
 
+[![CI/CD Pipeline](https://github.com/GarciaVillenaLuis/zero-trust-posture-matrix/actions/workflows/ci.yml/badge.svg)](https://github.com/GarciaVillenaLuis/zero-trust-posture-matrix/actions/workflows/ci.yml)
 [![Zero Trust Maturity](https://img.shields.io/badge/Maturity%20Index-95%2F100%20(Optimal)-brightgreen?style=flat-square&logo=cisco&logoColor=white)](https://github.com/GarciaVillenaLuis/zero-trust-posture-matrix)
 [![Standard](https://img.shields.io/badge/Framework-NIST%20SP%20800--207%20%7C%20CISA%20ZTMM-blue?style=flat-square&logo=nist&logoColor=white)](https://csrc.nist.gov/publications/detail/sp/800-207/final)
 [![Python Version](https://img.shields.io/badge/Python-3.9%2B-blue?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
