@@ -107,3 +107,8 @@ python -m unittest tests/test_zero_trust_eval.py
 
 Real-time Zero Trust maturity telemetry and cryptographic audit hashes are tracked in:
 - [`matrix/zero_trust_maturity.json`](./matrix/zero_trust_maturity.json)
+
+
+## 🔒 Security Governance & CodeQL SAST Baseline
+
+This repository enforces continuous semantic code analysis via official **GitHub CodeQL** and automated zero-vulnerability security baselines for all multi-cloud governance modules.
