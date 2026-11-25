@@ -1,5 +1,5 @@
 {
-  "last_assessment_utc": "2026-11-22T07:30:15.006Z",
+  "last_assessment_utc": "2026-11-25T07:30:15.138Z",
   "framework": "NIST SP 800-207 / CISA ZTMM v2.0",
   "maturity_stage": "ADVANCED_OPTIMAL",
   "pillars": {
@@ -24,6 +24,6 @@
       "status": "OPTIMAL"
     }
   },
-  "composite_zero_trust_index": 94.7,
-  "audit_hash": "SHA256:GO8plal/o0NJvksPk2mSxglkVcEj6zDgWp2ZDIe7+NU="
+  "composite_zero_trust_index": 95.1,
+  "audit_hash": "SHA256:XbApufFJaIf/vXpNWYPPUgb4l/csAjDpah+LavzyXxM="
 }
