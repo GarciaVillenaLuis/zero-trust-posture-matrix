@@ -25,5 +25,7 @@
     }
   },
   "composite_zero_trust_index": 95.1,
-  "audit_hash": "SHA256:XbApufFJaIf/vXpNWYPPUgb4l/csAjDpah+LavzyXxM="
+  "audit_hash": "SHA256:XbApufFJaIf/vXpNWYPPUgb4l/csAjDpah+LavzyXxM=",
+  "last_sync_utc": "2026-11-25T11:36:00Z",
+  "telemetry_seq": 1
 }
